@@ -2,6 +2,7 @@ package edu.sandbox.javadatabasetools.springdatajpa.service;
 
 import edu.sandbox.javadatabasetools.springdatajpa.converter.BookConverter;
 import edu.sandbox.javadatabasetools.springdatajpa.repository.BookRepository;
+import edu.sandbox.javadatabasetools.springdatajpa.test.EntityPersisterService;
 import edu.sandbox.javadatabasetools.starter.dto.BookDto;
 import edu.sandbox.javadatabasetools.starter.service.BookService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository repository;
     private final BookConverter converter;
+    private final EntityPersisterService entityPersisterService;
 
     @Override
     public List<BookDto> findAll() {
@@ -31,7 +33,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void create(BookDto bookDto) {
         var book = converter.toBook(bookDto);
-        repository.save(book);
+        entityPersisterService.save(book);
     }
 
     @Override
