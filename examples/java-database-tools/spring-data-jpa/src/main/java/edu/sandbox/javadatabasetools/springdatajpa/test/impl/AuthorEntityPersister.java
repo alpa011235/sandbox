@@ -21,12 +21,6 @@ public class AuthorEntityPersister extends BaseEntityWithRelationshipPersister<B
     private final AuthorRepository repository;
 
     @Override
-    public void persist(Book entity) {
-        super.persist(entity);
-        log.info(">>>> 1. I'm AuthorEntityPersister");
-    }
-
-    @Override
     public Optional<Author> getChildRelationship(Book book) {
         return Optional.of(book)
                 .map(Book::getAuthor);

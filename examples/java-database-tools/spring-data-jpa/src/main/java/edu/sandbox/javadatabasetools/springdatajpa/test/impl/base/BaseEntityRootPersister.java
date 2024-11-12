@@ -2,15 +2,15 @@ package edu.sandbox.javadatabasetools.springdatajpa.test.impl.base;
 
 import edu.sandbox.javadatabasetools.springdatajpa.test.EntityPersister;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Objects;
 
 @Slf4j
-public abstract class BaseEntityPersister<T> implements EntityPersister<T> {
+public abstract class BaseEntityRootPersister<T> extends BaseEntityJpaPersister<T> implements EntityPersister<T> {
 
     @Override
     public void persist(T entity) {
-        getRepository().save(entity);
+        Objects.requireNonNull(entity, "root entity can't be null");
+        save(entity);
     }
-
-    protected abstract JpaRepository<T, ?> getRepository();
 }

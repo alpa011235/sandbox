@@ -38,7 +38,6 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "genre_id", nullable = false)
     )
-//    @Transient
     private List<Genre> genres = new ArrayList<>();
 
     public void setComments(List<Comment> comments) {

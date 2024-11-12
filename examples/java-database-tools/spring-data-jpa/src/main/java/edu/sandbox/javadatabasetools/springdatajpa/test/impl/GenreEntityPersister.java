@@ -3,7 +3,7 @@ package edu.sandbox.javadatabasetools.springdatajpa.test.impl;
 import edu.sandbox.javadatabasetools.springdatajpa.model.Book;
 import edu.sandbox.javadatabasetools.springdatajpa.model.Genre;
 import edu.sandbox.javadatabasetools.springdatajpa.repository.GenreRepository;
-import edu.sandbox.javadatabasetools.springdatajpa.test.impl.base.BaseEntityWithCollectionRelationshipPersister;
+import edu.sandbox.javadatabasetools.springdatajpa.test.impl.base.BaseEntityWithRelationshipCollectionPersister;
 import edu.sandbox.javadatabasetools.springdatajpa.test.order.DefaultOrder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +16,9 @@ import java.util.List;
 @Getter
 @Service
 @RequiredArgsConstructor
-public class GenreEntityPersister extends BaseEntityWithCollectionRelationshipPersister<Book, Genre> {
+public class GenreEntityPersister extends BaseEntityWithRelationshipCollectionPersister<Book, Genre> {
 
     private final GenreRepository repository;
-
-    @Override
-    public void persist(Book entity) {
-        super.persist(entity);
-        log.info(">>>> 1. I'm GenreEntityPersister");
-    }
 
     @Override
     public List<Genre> getChildRelationship(Book book) {
