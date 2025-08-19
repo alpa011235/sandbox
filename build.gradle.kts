@@ -1,11 +1,13 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.kotlin.dsl.the
 import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
 
 plugins {
+    alias(libs.plugins.springframework.boot) apply false
+    alias(libs.plugins.spring.dependency.management)
     idea
-    id("io.spring.dependency-management")
-    id("org.springframework.boot") apply false
 }
 
 idea {
@@ -26,30 +28,25 @@ allprojects {
         mavenCentral()
     }
 
-    val lombok: String by project
-    val mapStruct: String by project
-    val springShellStarter: String by project
-    val hibernate: String by project
-    val log4jdbcRemix: String by project
-    val datasourceProxy: String by project
-    val p6spy: String by project
-    val myBatisStarter: String by project
-
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
         dependencies {
             imports {
                 mavenBom(BOM_COORDINATES)
             }
-            dependency("org.projectlombok:lombok:$lombok")
-            dependency("org.mapstruct:mapstruct:$mapStruct")
-            dependency("org.mapstruct:mapstruct-processor:$mapStruct")
-            dependency("org.springframework.shell:spring-shell-starter:$springShellStarter")
-            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:$myBatisStarter")
-            dependency("org.hibernate:hibernate-core:$hibernate")
-            dependency("org.lazyluke:log4jdbc-remix:$log4jdbcRemix")
-            dependency("net.ttddyy:datasource-proxy:$datasourceProxy")
-            dependency("p6spy:p6spy:$p6spy")
+            // The versions are hardcoded here because of an issue with the
+            // io.spring.dependency-management plugin and Gradle version catalogs.
+            // The plugin does not seem to be able to resolve the versions from the
+            // catalog at configuration time.
+            dependency("org.projectlombok:lombok:1.18.30")
+            dependency("org.mapstruct:mapstruct:1.5.5.Final")
+            dependency("org.mapstruct:mapstruct-processor:1.5.5.Final")
+            dependency("org.springframework.shell:spring-shell-starter:3.1.3")
+            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2")
+            dependency("org.hibernate:hibernate-core:6.3.1.Final")
+            dependency("org.lazyluke:log4jdbc-remix:0.2.7")
+            dependency("net.ttddyy:datasource-proxy:1.9")
+            dependency("p6spy:p6spy:3.9.1")
         }
     }
 

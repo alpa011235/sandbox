@@ -1,11 +1,11 @@
 dependencies {
     implementation(project(":examples:java-database-tools-starter"))
-    implementation("org.hibernate.orm:hibernate-core")
-    implementation("p6spy:p6spy")
+    implementation(libs.hibernate.core)
+    implementation(libs.p6spy)
 
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 
-    compileOnly("org.mapstruct:mapstruct")
-    annotationProcessor("org.mapstruct:mapstruct-processor")
+    compileOnly(libs.mapstruct)
+    annotationProcessor(libs.mapstruct.processor)
 }

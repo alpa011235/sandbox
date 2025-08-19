@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="MyBatisDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <option name="ACTIVE_PROFILES" value="local" />
-    <module name="sandbox.examples.java-database-tools.my-batis.main" />
+    <module name="sandbox.examples.java-database-tools.mybatis.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="edu.sandbox.javadatabasetools.mybatis.MyBatisDemo" />
     <method v="2">
       <option name="Make" enabled="true" />
