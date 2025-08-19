@@ -7,11 +7,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jooq")
     implementation(project(":examples:java-database-tools-starter"))
 
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 
-    compileOnly("org.mapstruct:mapstruct")
-    annotationProcessor("org.mapstruct:mapstruct-processor")
+    compileOnly(libs.mapstruct)
+    annotationProcessor(libs.mapstruct.processor)
 }
 
 buildscript {
@@ -19,12 +19,9 @@ buildscript {
         mavenCentral()
     }
 
-    val jooqCodegen: String by project
-    val postgresqlDriver: String by project
-
     dependencies {
-        classpath("org.jooq:jooq-codegen:${jooqCodegen}")
-        classpath("org.postgresql:postgresql:${postgresqlDriver}")
+        classpath(libs.jooq.codegen)
+        classpath(libs.postgresql.driver)
     }
 }
 
